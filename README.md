@@ -178,6 +178,89 @@ It uses an ensemble of trees, which can improve generalization compared with an 
 - `min_samples_leaf=5`
 - `random_state=42`
 
+- ## 📊 Model Performance Comparison
+
+In this project, three Machine Learning classification algorithms were trained and evaluated on the test dataset:
+
+1. Logistic Regression
+2. Decision Tree
+3. Random Forest
+
+The models were evaluated using Accuracy, Precision, Recall, F1-Score, and ROC-AUC.
+
+### 1. Performance of All Three Algorithms
+
+The following results are taken from the project's Jupyter Notebook:
+
+| Evaluation Metric | Logistic Regression | Decision Tree | Random Forest |
+|---|---:|---:|---:|
+| **Accuracy** | **79.48%** | 76.47% | 78.85% |
+| Precision | 68.10% | 57.73% | **70.55%** |
+| Recall | 43.17% | **43.53%** | 35.34% |
+| F1-Score | **52.84%** | 49.64% | 47.09% |
+| ROC-AUC | **81.69%** | 76.17% | 81.59% |
+
+### 2. Classification Report
+
+The classification reports below show how well each algorithm predicts the two classes: `No Claim` and `Claim`.
+
+#### Logistic Regression
+
+| Class | Precision | Recall | F1-Score | Support |
+|---|---:|---:|---:|---:|
+| No Claim | 82% | 93% | 87% | 1,512 |
+| Claim | 68% | 43% | 53% | 549 |
+| **Overall Accuracy** | | | **79%** | **2,061** |
+
+**Explanation:** Logistic Regression achieved the highest accuracy and ROC-AUC among the three models. It performed well in identifying customers who did not make a claim.
+
+#### Decision Tree
+
+| Class | Precision | Recall | F1-Score | Support |
+|---|---:|---:|---:|---:|
+| No Claim | 81% | 88% | 85% | 1,512 |
+| Claim | 58% | 44% | 50% | 549 |
+| **Overall Accuracy** | | | **76%** | **2,061** |
+
+**Explanation:** Decision Tree achieved an accuracy of approximately 76%. It offers a tree-based approach that can help explain how the model makes predictions, but it had the lowest ROC-AUC among the three models.
+
+#### Random Forest
+
+| Class | Precision | Recall | F1-Score | Support |
+|---|---:|---:|---:|---:|
+| No Claim | 80% | 95% | 87% | 1,512 |
+| Claim | 71% | 35% | 47% | 549 |
+| **Overall Accuracy** | | | **79%** | **2,061** |
+
+**Explanation:** Random Forest achieved an accuracy of approximately 79% and the highest precision for the `Claim` class. However, its recall for claims was lower, meaning it missed a larger proportion of actual claim cases.
+
+### 3. Which Algorithm Performed Best?
+
+Based on the actual evaluation results:
+
+- **Logistic Regression:** Best overall result, with 79.48% accuracy and 81.69% ROC-AUC.
+- **Decision Tree:** Achieved 76.47% accuracy and 76.17% ROC-AUC.
+- **Random Forest:** Achieved 78.85% accuracy and 81.59% ROC-AUC.
+
+**Final Selection: Logistic Regression**
+
+The notebook selects Logistic Regression because it achieved the highest ROC-AUC score of **0.8169 (81.69%)**.
+
+ROC-AUC measures how well a model distinguishes between the two classes across different classification thresholds. Logistic Regression performed slightly better than Random Forest on this metric.
+
+### 4. Important Observation
+
+The dataset contains more `No Claim` records than `Claim` records:
+
+- No Claim: 1,512 test samples
+- Claim: 549 test samples
+
+Although all three models achieved reasonably good overall accuracy, their recall scores for the `Claim` class were relatively low.
+
+This means the models missed some customers who actually made insurance claims. In a real insurance business, missing genuine claims could be an important concern.
+
+Therefore, model selection should consider not only accuracy but also ROC-AUC, recall, precision, and the business cost of incorrect predictions.
+
 ### 🏆 Model Comparison
 
 All three models are trained using the same training and testing split and evaluated using the same metrics.
